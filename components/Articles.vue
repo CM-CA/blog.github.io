@@ -54,12 +54,10 @@ export default {
 .cf {
   *zoom: 1;
 }
-
 .fl {
   float: left;
   _display: inline;
 }
-
 .avenir {
   font-family: 'avenir next', avenir, sans-serif;
 }
