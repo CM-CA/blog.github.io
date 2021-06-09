@@ -1,9 +1,36 @@
 <template>
-  <article>
-    <Article />
-    <nuxt-content :document="article" />
+  <article data-name="article-full-bleed-background">
+    <div
+      class="cf"
+      style="
+        background: url(`~/assets/images/${article.img}`) no-repeat center
+          center fixed;
+        background-size: cover;
+      "
+    >
+      <div class="fl pa3 pa4-ns bg-white black-70 measure-narrow f3 times">
+        <header class="bb b--black-70 pv4">
+          <h3 class="f2 fw7 ttu tracked lh-title mt0 mb3 avenir">
+            {{ article.title }}
+          </h3>
+          <h4 class="f3 fw4 i lh-title mt0"></h4>
+        </header>
+        <section class="pt5 pb4">
+          <p class="times lh-copy measure f4 mt0"></p>
+        </section>
+      </div>
+    </div>
   </article>
 </template>
+<script>
+export default {
+  async asyncData({ $http, params }) {
+    const article = await $http.$get(`http://localhost:3000/blog/${params.id}`)
+    return { article }
+  },
+}
+</script>
+
 <style>
 .bb {
   border-bottom-style: solid;
@@ -128,17 +155,3 @@
   }
 }
 </style>
-<script>
-export default {
-  async asyncData({ $content, params }) {
-    const article = await $content('articles', params.slug).fetch()
-    return { article }
-  },
-  methods: {
-    formatDate(date) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('en', options)
-    },
-  },
-}
-</script>

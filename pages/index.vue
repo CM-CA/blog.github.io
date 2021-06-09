@@ -1,3 +1,5 @@
 <template>
-  <Navigation />
+  <div>
+    <Navigation />
+  </div>
 </template>
