@@ -1,7 +1,13 @@
 <template>
   <article>
-    <Article />
-    <nuxt-content :document="article" />
+    <articles :author="article.author"></articles>
+    <p>Article last updated: {{ formatDate(article.updatedAt) }}</p>
+    <div class="pa4 ph7-l georgia mw9-l center">
+      <nuxt-content
+        :document="article"
+        class="f5 f3-ns lh-copy measure georgia"
+      />
+    </div>
   </article>
 </template>
 <script>
@@ -19,126 +25,43 @@ export default {
 }
 </script>
 <style>
-.bb {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+.georgia {
+  font-family: georgia, serif;
 }
-
-.b--black-70 {
-  border-color: rgba(0, 0, 0, 0.7);
+.mw9 {
+  max-width: 96rem;
 }
-
-.cf:before,
-.cf:after {
-  content: ' ';
-  display: table;
+.pa4 {
+  padding: 2rem;
 }
-
-.cf:after {
-  clear: both;
-}
-
-.cf {
-  *zoom: 1;
-}
-
-.fl {
-  float: left;
-  _display: inline;
-}
-
-.avenir {
-  font-family: 'avenir next', avenir, sans-serif;
-}
-
-.times {
-  font-family: times, serif;
-}
-
-.i {
-  font-style: italic;
-}
-
-.fw4 {
-  font-weight: 400;
-}
-
-.fw7 {
-  font-weight: 700;
-}
-
-.tracked {
-  letter-spacing: 0.1em;
-}
-
-.lh-title {
-  line-height: 1.25;
-}
-
 .lh-copy {
   line-height: 1.5;
 }
-
-.black-70 {
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.bg-white {
-  background-color: #fff;
-}
-
-.pa3 {
-  padding: 1rem;
-}
-
-.pb4 {
-  padding-bottom: 2rem;
-}
-
-.pt5 {
-  padding-top: 4rem;
-}
-
-.pv4 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-.mb3 {
-  margin-bottom: 1rem;
-}
-
-.mt0 {
-  margin-top: 0;
-}
-
-.ttu {
-  text-transform: uppercase;
-}
-
-.f2 {
-  font-size: 2.25rem;
-}
-
-.f3 {
-  font-size: 1.5rem;
-}
-
-.f4 {
-  font-size: 1.25rem;
-}
-
 .measure {
   max-width: 30em;
 }
-
-.measure-narrow {
-  max-width: 20em;
+.f5 {
+  font-size: 1rem;
 }
-
+.center {
+  margin-right: auto;
+  margin-left: auto;
+}
 @media screen and (min-width: 30em) {
-  .pa4-ns {
-    padding: 2rem;
+  .pt5-ns {
+    padding-top: 4rem;
+  }
+  .f3-ns {
+    font-size: 1.5rem;
+  }
+  @media screen and (min-width: 60em) {
+    .mw9-l {
+      max-width: 96rem;
+    }
+    .ph7-l {
+      padding-left: 16rem;
+      padding-right: 16rem;
+    }
   }
 }
 </style>
